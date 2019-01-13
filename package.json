@@ -4,8 +4,9 @@
   "description": "resipes search project",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode: development",
-    "build": "webpack --mode: production"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,10 @@
   },
   "homepage": "https://github.com/DominikLipinski/recipesFinder#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "jquery": "^3.3.1"
