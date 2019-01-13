@@ -1,0 +1,25 @@
+{
+  "name": "recipes-search",
+  "version": "1.0.0",
+  "description": "resipes search project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DominikLipinski/recipesFinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DominikLipinski/recipesFinder/issues"
+  },
+  "homepage": "https://github.com/DominikLipinski/recipesFinder#readme",
+  "devDependencies": {
+    "webpack": "^4.28.4"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
