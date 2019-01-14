@@ -1,4 +1,6 @@
 import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
 /* Global state:
 -search
@@ -11,7 +13,8 @@ const state = {};
 
 const controlSearch = async () => {
     //get query from view - TODO
-    const query = 'chicken';
+    const query = searchView.getInput();
+    console.log(query);
 
     //generate new search object and add it to state
     if(query) {
@@ -27,7 +30,7 @@ const controlSearch = async () => {
     }
 }
 
-document.querySelector('.search').addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
