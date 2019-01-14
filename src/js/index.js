@@ -1,9 +1,5 @@
-import axios from 'axios';
+import Search from './models/Search';
 
-const getResults = async(query) => {
-    const key = '8fcb4a11834b907ae4e2d48ee3fc2fd6';
-    const res = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${query}`);
-    console.log(res);
-};
-
-getResults('pizza');
+const search = new Search('garlic');
+console.log(search);
+search.getResults();
