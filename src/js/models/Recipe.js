@@ -31,18 +31,26 @@ export default class Recipe {
     };
 
     parseIngredients() {
-        const unitsLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'cups', 'pounds'];
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
         const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'cup', 'pound'];
         const newIngredients = this.ingredients.map(el => {
             // uniform units
             let ingredient = el.toLowerCase();
             unitsLong.forEach((unit, i) => {
-                ingredient = ingredient.replace(unit, unitsShort(i));
+                ingredient = ingredient.replace(unit, unitsShort[i]);
             });
-
             // remove parenthesis
-            ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
             // parse ingredients into count, unit and ingredient
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(elem => unitsShort.includes(elem));
+            if(unitIndex > -1) {
+                //there is a unit
+            } else if(parseInt(arrIng[0], 10)) {
+                // no unit, but 1st char is a number
+            } else if(unitIndex === -1) {
+                //no unit
+            }
 
             return ingredient;
         });
