@@ -24,16 +24,20 @@ const controlSearch = async () => {
     if(query) {
         state.search = new Search(query);
 
+    try {
     // prepare UI for results (cleaning)
-        searchView.clearInput();
-        searchView.clearResults();
-        renderLoader(elements.searchRes);
+         searchView.clearInput();
+         searchView.clearResults();
+         renderLoader(elements.searchRes);
     // perform search 
-       await state.search.getResults();
-
+        await state.search.getResults();
     //display result
+         clearLoader();
+         searchView.renderResults(state.search.result);   
+    } catch (error) {
+        console.log(error);
         clearLoader();
-        searchView.renderResults(state.search.result);
+    }
     }
 }
 
@@ -63,6 +67,7 @@ const controlRecipe = async () => {
         //create new recipe object
         state.recipe = new Recipe(id);
 
+        try {
         //get recipe data
         await state.recipe.getRecipe();
 
@@ -72,8 +77,11 @@ const controlRecipe = async () => {
 
         //render recipe
         console.log(state.recipe);
+        } catch(err) {
+        console.log(err);
+        }
+
     }
 };
 
-window.addEventListener('hashchange', controlRecipe);
-window.addEventListener('load', controlRecipe);
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
