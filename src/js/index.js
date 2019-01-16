@@ -17,7 +17,9 @@ const state = {};
 
 const controlSearch = async () => {
     //get query from view - TODO
-    const query = searchView.getInput();
+    //const query = searchView.getInput();
+    // 4 test
+    const query = 'pizza';
     console.log(query);
 
     //generate new search object and add it to state
@@ -42,6 +44,12 @@ const controlSearch = async () => {
 }
 
 elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+// 4 test
+window.addEventListener('load', e => {
     e.preventDefault();
     controlSearch();
 });
