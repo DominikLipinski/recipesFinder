@@ -135,7 +135,28 @@ elements.shopping.addEventListener('click', e => {
 /*-- LIKES CONTROLLER --*/
 
 const controlLike = () => {
-
+    if(!state.likes) state.likes = new Likes();
+    const currentID = state.recipe.id;
+    //user has yet NOT liked recipe
+    if(!state.likes.isLiked(currentID)) {
+    // add like to state
+        const newLike = state.likes.addLike(
+            currentID,
+            state.recipe.title,
+            state.recipe.author,
+            state.recipe.img
+        );
+    //toogle likes button
+    //add like to UI list
+    console.log(state.likes)
+    //user HAS liked recipe    
+    } else {
+    // remove like from state
+    state.likes.deleteLike(currentID);
+    //toogle likes button
+    //remove like from UI list
+    console.log(state.likes)        
+    }
 };
 
 // recipe servings button clicks
