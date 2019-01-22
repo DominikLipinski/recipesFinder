@@ -137,7 +137,7 @@ elements.shopping.addEventListener('click', e => {
 
 // for testing
 state.likes = new Likes();
-likesView.toogleLikeMenu(state.likes.getNumLikes());
+//likesView.toogleLikeMenu(state.likes.getNumLikes());
 
 const controlLike = () => {
     if(!state.likes) state.likes = new Likes();
@@ -152,7 +152,7 @@ const controlLike = () => {
         state.recipe.img
         );
     //toogle likes button
-    likesView.toogleLikeBtn(true);
+    likesView.toggleLikeBtn(true);
     //add like to UI list
     likesView.renderLike(newLike);
     //user HAS liked recipe    
@@ -160,7 +160,7 @@ const controlLike = () => {
     // remove like from state
     state.likes.deleteLike(currentID);
     //toogle likes button
-    likesView.toogleLikeBtn(false);
+    likesView.toggleLikeBtn(false);
     //remove like from UI list
     likesView.deleteLike(currentID);      
     }
