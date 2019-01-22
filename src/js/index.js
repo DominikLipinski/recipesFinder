@@ -5,6 +5,7 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
 /* Global state:
@@ -93,7 +94,7 @@ const controlRecipe = async () => {
 
         //render recipe
         clearLoader();
-        recipeView.renderRecipe(state.recipe);
+        recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
         } catch(err) {
         console.log(err);
         }
@@ -134,6 +135,9 @@ elements.shopping.addEventListener('click', e => {
 
 /*-- LIKES CONTROLLER --*/
 
+// for testing
+state.likes = new Likes();
+
 const controlLike = () => {
     if(!state.likes) state.likes = new Likes();
     const currentID = state.recipe.id;
@@ -147,6 +151,7 @@ const controlLike = () => {
             state.recipe.img
         );
     //toogle likes button
+        likesView.toogleLikeBtn(true);
     //add like to UI list
     console.log(state.likes)
     //user HAS liked recipe    
@@ -154,6 +159,7 @@ const controlLike = () => {
     // remove like from state
     state.likes.deleteLike(currentID);
     //toogle likes button
+    likesView.toogleLikeBtn(false);
     //remove like from UI list
     console.log(state.likes)        
     }
