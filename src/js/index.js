@@ -51,11 +51,6 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
-// 4 test
-// window.addEventListener('load', e => {
-//     e.preventDefault();
-//     controlSearch();
-// });
 
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
@@ -135,10 +130,6 @@ elements.shopping.addEventListener('click', e => {
 
 /*-- LIKES CONTROLLER --*/
 
-// for testing
-state.likes = new Likes();
-//likesView.toogleLikeMenu(state.likes.getNumLikes());
-
 const controlLike = () => {
     if(!state.likes) state.likes = new Likes();
     const currentID = state.recipe.id;
@@ -167,6 +158,15 @@ const controlLike = () => {
 
     likesView.toogleLikeMenu(state.likes.getNumLikes());
 };
+
+// restore likes from local storage on page load
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+    state.likes.readStorage();
+    likesView.toogleLikeMenu(state.likes.getNumLikes());
+    state.likes.likes.forEach(like => likesView.renderLike(like));
+});
+
 
 // recipe servings button clicks
 elements.recipe.addEventListener('click', e => {
